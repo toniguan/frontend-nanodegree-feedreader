@@ -5,8 +5,8 @@ This project is part of Udacity FrontEnd Nanodegree program. The web application
 ## Table of Contents
 
 * [How to run](#how-to-run)
-* [what is tested](#what is tested)
-* [Code dependencies](#code-dependencies)
+* [what is tested](#what-is-tested)
+* [Credits](#credits)
 
 
 
@@ -16,6 +16,7 @@ This project is part of Udacity FrontEnd Nanodegree program. The web application
 1. download or clone the project from GitHub [project repository](https://github.com/toniguan/frontend-nanodegree-feedreader)
 2. open *index.html* in any browser
 3. scroll down to page bottom to see the test results
+
 
 ## What is tested
 
@@ -31,9 +32,8 @@ This project is part of Udacity FrontEnd Nanodegree program. The web application
 4. New feed Selection
    - feed content changes when a new feed is selected
 
-MATTHEW CRANFORD
 
-## Code dependencies
+## Credits
 
 * [Matthew Cranford Blog](https://matthewcranford.com/restaurant-reviews-app-walkthrough-part-1-map-api/)
 * [Udacity RSS Reader Project Assets](https://github.com/udacity/frontend-nanodegree-feedreader)
