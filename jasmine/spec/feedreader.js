@@ -62,8 +62,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('hidden by default', function(){
-           const body = document.querySelector('body');
-           expect(body.hasClass('menu-hidden')).toBe(true);
+           expect($('body').hasClass('menu-hidden')).toBe(true);
          })
 
          /* TODO: Write a test that ensures the menu changes
@@ -72,14 +71,14 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
           it('toggle display when clicked', function(){
-            const body = document.querySelector('body');
+
             const menuIcon = document.querySelector('.menu-icon-link');
-            expect(body.classList.contains('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
 
             menuIcon.click();
-            expect(body.classList.contains('menu-hidden')).toBe(false);
+            expect($('body').hasClass('menu-hidden')).toBe(false);
             menuIcon.click();
-            expect(body.classList.contains('menu-hidden')).toBe(true);
+            expect($('body').hasClass('menu-hidden')).toBe(true);
 
           })
     });
@@ -115,19 +114,24 @@ $(function() {
          const container = document.querySelector('.feed');
          let feed1 = [], feed2 = [];
          let feed;
+
          beforeEach(function(done) {
-           loadFeed(0);
-           feed = container.children;
-           for(let i = 0; i < feed.length; i++){
-             feed1.push(feed[i].innerText);
-           }
-           loadFeed(1, done);
+           loadFeed(0, function(){
+             feed = container.children;
+             for(let i = 0; i < feed.length; i++){
+               feed1.push(feed[i].innerText);
+             }
+           });
+           loadFeed(1, function(){
+             feed = container.children;
+             for(let i = 0; i < feed.length; i++){
+               feed2.push(feed[i].innerText);
+             }
+             done();
+           });
          });
-         function isSameFeed(){
-           feed = container.children;
-           for(let i = 0; i < feed.length; i++){
-             feed2.push(feed[i].innerText);
-           }
+
+         function isSameFeed(feed1, feed2){
            if(feed1.length != feed2.length) return false;
            for(let i = 0; i < feed1.length; i++){
              if(feed1[i] != feed2[i]) return false;
@@ -135,7 +139,7 @@ $(function() {
            return true;
          }
          it('content changes', function(){
-           expect(isSameFeed(feed1,feed2)).toBe(false);
+           expect(isSameFeed(feed1, feed2)).toBe(false);
          })
     })
 }());
